@@ -18,10 +18,11 @@ function NavBar(){
                     top: 0,
                     left: 0,
                     zIndex: 1000,
+                    border:'1px solid #1976d2'
                 }}
             >
                 {/* Left side */}
-                <h3 style={{ margin: 0, color:"black" }}>task management app</h3>
+                <h3 style={{ margin: 0, color:"blue" }}>task management app</h3>
 
                 {/* Right side */}
                 <div>
