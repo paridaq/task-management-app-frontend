@@ -2,6 +2,17 @@
 
 function SideBar(){
 
+    const menu=[
+    {name:"Home",value:"Home",role:["ROLE_ADMIN","ROLE_CUSTOMER"]},
+    {name:"DONE",value:"DONE",role:["ROLE_ADMIN","ROLE_CUSTOMER"]},
+    {name:"ASSIGNED",value:"ASSIGNED",role:["ROLE_ADMIN"]},
+    {name:"NOT ASSIGNED",value:"PENDING",role:["ROLE_ADMIN"]},
+    {name:"Create New Task",value:"",role:["ROLE_ADMIN"]},
+    {name:"Notification",value:"NOTIFICATION",role:["ROLE_CUSTOMER"]}
+    ]
+
+    const role = "ROLE_ADMIN";
+
     return (
         <div
             style={{
