@@ -25,6 +25,9 @@ function SideBar(){
       role: string;
     };
     const role: Role = { role: "ROLE_ADMIN" };
+    const handleLogout=()=>{
+        console.log("user logedout")
+    }
 
     
 
@@ -86,6 +89,23 @@ function SideBar(){
                             </a>
                         </div>
                     ))}
+
+                    <button
+                      style={{
+                        padding: "10px 32px",
+                        background: "#1976d2",
+                        color: "#fff",
+                        border: "none",
+                        borderRadius: "30px",
+                        fontSize: "16px",
+                        width: "140px",
+                        marginTop: "16px",
+                        cursor: "pointer"
+                      }}
+                      onClick={handleLogout}
+                    >
+                      logout
+                    </button>
             </div>
 
 
