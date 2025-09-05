@@ -34,17 +34,16 @@ function SideBar(){
     return (
         <div
             style={{
-                
                 left: 0,
                 top: 0,
                 width: '180px',
-                height: '89vh',
+                height: '100vh',
                 background: '#fff',
                 boxShadow: '2px 0 8px rgba(0,0,0,0.05)',
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
-                paddingTop: '70px',
+                paddingTop: '0px', // changed from 70px
                 zIndex: 1000,
                 border: '1px solid #1976d2',
             

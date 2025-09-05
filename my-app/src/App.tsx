@@ -1,18 +1,17 @@
-
-
-
 import Home from './home/Home'
 import NavBar from './navbar/NavBar'
 
-function App() {
- 
 
+function App() {
   return (
     <>
-    <NavBar/>
-    <Home/>
-
-     
+      <NavBar />
+      <div style={{ display: "flex", width: "100%", height: "calc(100vh - 60px)" }}>
+        
+        <div style={{ flex: 1 }}>
+          <Home />
+        </div>
+      </div>
     </>
   )
 }
