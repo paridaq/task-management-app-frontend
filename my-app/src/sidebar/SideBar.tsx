@@ -1,6 +1,10 @@
+import { useState } from "react";
 
 
 function SideBar(){
+
+
+    const[activeMenu,setActiveMenu] = useState<string>("Home");
 
     type MenuItem = {
         name: string;
@@ -21,6 +25,8 @@ function SideBar(){
       role: string;
     };
     const role: Role = { role: "ROLE_ADMIN" };
+
+    
 
     return (
         <div
@@ -46,22 +52,40 @@ function SideBar(){
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
-                gap: '100px'
+                gap: '10px'
             }}
             >
-                <h3 style={{ color: '#1976d2', marginBottom: '16px' }}>managemet table</h3>
+                <h3 style={{ color: '#1976d2', marginBottom: '16px' }}>management table</h3>
             
 
             <div>
                 {menu
-                  .filter(item => item.role.includes(role.role))
-                  .map(item => (
-                    <div
-                    style={{
-                        padding:"10px"
-                    }}
-                     key={item.value}><a href="">{item.name}</a></div>
-                  ))}
+                    .filter(item => item.role.includes(role.role))
+                    .map(item => (
+                        <div
+                            key={item.value}
+                            style={{
+                                padding: "10px",
+                                background: activeMenu === item.value ? "#1976d2" : "transparent",
+                                color: activeMenu === item.value ? "#fff" : "#1976d2",
+                                borderRadius: "4px",
+                                cursor: "pointer",
+                                marginBottom: "4px"
+                            }}
+                            onClick={() => setActiveMenu(item.value)}
+                        >
+                            <a
+                                href="#"
+                                style={{
+                                    color: activeMenu === item.value ? "#fff" : "#1976d2",
+                                    textDecoration: "none"
+                                }}
+                                onClick={e => e.preventDefault()}
+                            >
+                                {item.name}
+                            </a>
+                        </div>
+                    ))}
             </div>
 
 
