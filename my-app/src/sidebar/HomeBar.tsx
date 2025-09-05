@@ -1,3 +1,4 @@
+import TaskCard from "../task/TaskCard";
 
 
 function HomeBar(){
@@ -27,7 +28,9 @@ function HomeBar(){
                     justifyContent: 'center',
                 }}
             >
-                <h1 style={{ color: '#1976d2' }}>Home Component</h1>
+                <div>
+                    {[1,1,1,1].map((item)=><span key={item}><TaskCard/></span>)}
+                </div>
             </div>
         </div>
     )

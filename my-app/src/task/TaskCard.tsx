@@ -1,46 +1,72 @@
 
 
+function TaskCard() {
+    // Example tech stack
+    const techStack = ["React", "Spring Boot", "MySQL"];
 
-function TaskCard(){
-    return(
-
-        <div style={{
-            display: 'flex',
-            alignItems: 'center',
-            border: '1px solid #ccc',
-            borderRadius: '8px',
-            padding: '16px',
-            maxWidth: '400px',
-            background: '#fff',
-            boxShadow: '0 2px 8px rgba(0,0,0,0.05)'
-        }}>
-            {/* Left side: Image */}
-            <div style={{
-                width: '64px',
-                height: '64px',
-                background: '#eee',
-                borderRadius: '8px',
-                marginRight: '16px',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center'
-            }}>
-                {/* Placeholder image */}
+    return (
+        <div
+            style={{
+                display: "flex",
+                alignItems: "flex-start",
+                border: "1px solid #e0e0e0",
+                borderRadius: "12px",
+                padding: "24px",
+                width: "100%",
+                background: "#fff",
+                boxShadow: "0 2px 12px rgba(0,0,0,0.07)",
+                boxSizing: "border-box",
+                minHeight: "140px",
+            }}
+        >
+            {/* Left: Image */}
+            <div
+                style={{
+                    width: "80px",
+                    height: "80px",
+                    background: "#f5f5f5",
+                    borderRadius: "10px",
+                    marginRight: "28px",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                }}
+            >
                 <img
-                    src="https://via.placeholder.com/48"
+                    src="https://via.placeholder.com/64"
                     alt="Task"
-                    style={{ width: '48px', height: '48px', borderRadius: '4px' }}
+                    style={{ width: "64px", height: "64px", borderRadius: "6px" }}
                 />
             </div>
-            {/* Right side: Task details */}
-            <div>
-                <h3 style={{ margin: 0, fontSize: '1.1rem' }}>Task Title</h3>
-                <p style={{ margin: '4px 0 0 0', color: '#666', fontSize: '0.95rem' }}>
-                    Task description goes here.
+            {/* Right: Details */}
+            <div style={{ flex: 1 }}>
+                <p style={{ margin: 0, color: "#666", fontSize: "1rem" }}>
+                    Task description goes here. This is a sample description for the task.
                 </p>
+                <h3 style={{ margin: "12px 0 0 0", fontSize: "1.15rem", color: "#222" }}>
+                    Task Title
+                </h3>
+                <div style={{ marginTop: "14px", display: "flex", gap: "10px" }}>
+                    {techStack.map((tech) => (
+                        <span
+                            key={tech}
+                            style={{
+                                background: "#e3f2fd",
+                                color: "#1976d2",
+                                borderRadius: "6px",
+                                padding: "4px 12px",
+                                fontSize: "0.92rem",
+                                fontWeight: 500,
+                                letterSpacing: "0.01em",
+                            }}
+                        >
+                            {tech}
+                        </span>
+                    ))}
+                </div>
             </div>
         </div>
-    )
+    );
 }
 
 export default TaskCard;
