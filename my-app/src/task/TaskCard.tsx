@@ -62,7 +62,15 @@ function TaskCard() {
                         >
                             {tech}
                         </span>
+                        
                     ))}
+                    
+                </div>
+                <div style={{display:"flex", marginRight:"10px", gap:"20px"}}>
+                      <a href="">Assign</a>
+                      <a href="">Submissions</a>
+                      <a href="">Edit </a>
+                      <a href="">Delete</a>
                 </div>
             </div>
         </div>
