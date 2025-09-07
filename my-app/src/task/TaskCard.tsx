@@ -71,8 +71,8 @@ function TaskCard() {
                 </div>
                 <div style={{display:"flex", marginRight:"10px", gap:"20px"}}>
                       <a href="" onClick={()=>navigate("/assign")}>Assign</a>
-                      <a href="">Submissions</a>
-                      <a href="">Edit </a>
+                      <a href="" onClick={()=>navigate("/submissions")}>Submissions</a>
+                      <a href="" onClick={()=>navigate("/edittask")}>Edit </a>
                       <a href="">Delete</a>
                 </div>
             </div>
