@@ -1,8 +1,11 @@
+import { useNavigate } from "react-router";
 
 
 function TaskCard() {
     // Example tech stack
     const techStack = ["React", "Spring Boot", "MySQL"];
+
+    const navigate = useNavigate();
 
     return (
         <div
@@ -67,7 +70,7 @@ function TaskCard() {
                     
                 </div>
                 <div style={{display:"flex", marginRight:"10px", gap:"20px"}}>
-                      <a href="">Assign</a>
+                      <a href="" onClick={()=>navigate("/assign")}>Assign</a>
                       <a href="">Submissions</a>
                       <a href="">Edit </a>
                       <a href="">Delete</a>
