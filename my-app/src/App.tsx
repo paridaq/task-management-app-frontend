@@ -4,6 +4,8 @@ import NavBar from './navbar/NavBar'
 import Assign from './adminAccessPages/Assign'
 import Submission from './adminAccessPages/Submissons'
 import EditTask from './adminAccessPages/EditTask'
+import SignUp from './auth/SignUp'
+import SignIn from './auth/SignIn'
 
 
 function App() {
@@ -18,6 +20,8 @@ function App() {
            <Route path='/assign' element={<Assign/>}/>
            <Route path='/submissions' element={<Submission/>}/>
            <Route path='/editTask' element={<EditTask/>}/>
+           <Route path='/signup' element={<SignUp/>}/>
+           <Route path='/signin' element={<SignIn/>}/>
           </Routes>
         
         </div> 

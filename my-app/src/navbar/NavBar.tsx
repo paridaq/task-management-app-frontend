@@ -1,6 +1,8 @@
+import { useNavigate } from "react-router";
 
 
 function NavBar(){
+    const navigate = useNavigate();
 
     return(
         <>
@@ -26,8 +28,8 @@ function NavBar(){
 
                 {/* Right side */}
                 <div>
-                    <a href="" style={{ marginRight: "16px" }}>signIn</a>
-                    <a href="">signUp</a>
+                    <a href="" style={{ marginRight: "16px" }} onClick={()=>navigate("/signin")}>signIn</a>
+                    <a href="" onClick={()=>navigate("/signup")}> signUp</a>
                 </div>
             </div>
             {/* Spacer to prevent content being hidden behind navbar */}
