@@ -1,17 +1,19 @@
 import { useState } from "react";
+import { useLoaderData, useLocation, useNavigate } from "react-router";
 
 
 function SideBar(){
 
-
+const navigate = useNavigate();
     const[activeMenu,setActiveMenu] = useState<string>("Home");
+    const location = useLocation();
 
     type MenuItem = {
         name: string;
         value: string;
         role: string[];
     };
-
+//export something here
     const menu: MenuItem[] = [
         { name: "Home", value: "Home", role: ["ROLE_ADMIN", "ROLE_CUSTOMER"] },
         { name: "DONE", value: "DONE", role: ["ROLE_ADMIN", "ROLE_CUSTOMER"] },
@@ -74,7 +76,12 @@ function SideBar(){
                                 cursor: "pointer",
                                 marginBottom: "4px"
                             }}
-                            onClick={() => setActiveMenu(item.value)}
+                            onClick={() =>{ setActiveMenu(item.value);
+                                if(item.name=="Create New Task"){
+                                    navigate("/createtask")
+                                }
+                            }
+                            }
                         >
                             <a
                                 href="#"

@@ -6,6 +6,7 @@ import Submission from './adminAccessPages/Submissons'
 import EditTask from './adminAccessPages/EditTask'
 import SignUp from './auth/SignUp'
 import SignIn from './auth/SignIn'
+import CreateTask from './adminAccessPages/CreateTask'
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
            <Route path='/editTask' element={<EditTask/>}/>
            <Route path='/signup' element={<SignUp/>}/>
            <Route path='/signin' element={<SignIn/>}/>
+           <Route path='/createtask' element={<CreateTask/>}/>
           </Routes>
         
         </div> 
