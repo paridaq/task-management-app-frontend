@@ -36,7 +36,7 @@ function TaskCard() {
                 }}
             >
                 <img
-                    src="https://via.placeholder.com/64"
+                    src=""
                     alt="Task"
                     style={{ width: "64px", height: "64px", borderRadius: "6px" }}
                 />

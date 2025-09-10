@@ -1,8 +1,11 @@
+import { useState } from "react";
 import { useNavigate } from "react-router";
 
 
 function NavBar(){
     const navigate = useNavigate();
+    const[name,setName]  = useState("");
+    
 
     return(
         <>
