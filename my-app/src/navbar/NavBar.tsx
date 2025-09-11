@@ -5,22 +5,23 @@ import { AuthContext } from "../context/AuthContext";
 
 function NavBar(){
     const navigate = useNavigate();
-    const[name,setName]= useState<string>("");
+    const[fullName,setFullName]= useState<string>("");
    
     // If you need to use setJwt from AuthContext, destructure it here:
      const { jwt } = useContext(AuthContext) ?? { jwt: ""};  
      
      const userProfile=async()=>{
         try {
-            const response = await fetch(`http://localhost:5000/api/user/profile`,{
+            const response = await fetch(`http://localhost:5001/api/user/profile`,{
              method:"GET",
              headers:{
-                "Autohrization":`Bearer ${jwt}`,
+                "Authorization":`Bearer ${jwt}`,
                 "Content-Type":"application/json"
              }
         });
-        const result = response.json();
+        const result = await response.json();
         console.log(result);
+        setFullName(result.fullName);
         
         } catch (error) {
             console.log(error)
@@ -29,6 +30,7 @@ function NavBar(){
 
      useEffect(()=>{
         if(jwt){
+            console.log(jwt)
             userProfile();
         }
      },[jwt])
@@ -63,7 +65,7 @@ function NavBar(){
                     <div>
                     {jwt ? (
                         <div>
-                            <h3>user</h3>
+                            <h3>{fullName}</h3>
                         </div>
                     ):( 
                         
