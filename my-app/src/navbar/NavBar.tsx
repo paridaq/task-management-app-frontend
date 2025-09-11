@@ -1,4 +1,4 @@
-import { use, useContext, useState } from "react";
+import { use, useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import { AuthContext } from "../context/AuthContext";
 
@@ -8,7 +8,30 @@ function NavBar(){
     const[name,setName]= useState<string>("");
    
     // If you need to use setJwt from AuthContext, destructure it here:
-     const { jwt, setJwt } = useContext(AuthContext) ?? { jwt: "", setJwt: () => {} };    
+     const { jwt } = useContext(AuthContext) ?? { jwt: ""};  
+     
+     const userProfile=async()=>{
+        try {
+            const response = await fetch(`http://localhost:5000/api/user/profile`,{
+             method:"GET",
+             headers:{
+                "Autohrization":`Bearer ${jwt}`,
+                "Content-Type":"application/json"
+             }
+        });
+        const result = response.json();
+        console.log(result);
+        
+        } catch (error) {
+            console.log(error)
+        }
+     }
+
+     useEffect(()=>{
+        if(jwt){
+            userProfile();
+        }
+     },[jwt])
      
 
      
@@ -40,12 +63,13 @@ function NavBar(){
                     <div>
                     {jwt ? (
                         <div>
-                            <a href="" style={{ marginRight: "16px" }} onClick={()=>navigate("/signin")}>signIn</a>
-                        <a href="" onClick={()=>navigate("/signup")}> signUp</a>
+                            <h3>user</h3>
                         </div>
                     ):( 
-                        <div>
-                            <h3>user</h3>
+                        
+                         <div>
+                            <a href="" style={{ marginRight: "16px" }} onClick={()=>navigate("/signin")}>signIn</a>
+                        <a href="" onClick={()=>navigate("/signup")}> signUp</a>
                         </div>
                     )}
                     

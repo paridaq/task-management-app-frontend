@@ -1,11 +1,13 @@
 import { useContext, useState, type FormEvent, type ReactHTMLElement } from "react";
 import { AuthContext } from "../context/AuthContext";
+import { useNavigate } from "react-router";
 
 
 function SignUp(){
     const auth = useContext(AuthContext);
     const jwt = auth?.jwt ?? "";
     const setJwt = auth?.setJwt ?? (() => {});
+    const navigate = useNavigate()
 
     const [fullName,setFullName] = useState<string>("")
     const[email,setEmail] = useState<string>("")
@@ -24,7 +26,7 @@ function SignUp(){
         const data ={fullName,email,password,role}
         e.preventDefault();
         try {
-            const response = await fetch("http:localhost:5000/auth/signup"{
+            const response = await fetch("http://localhost:5000/auth/signup",{
                 method:"POST",
                 headers:{
 
@@ -33,8 +35,12 @@ function SignUp(){
                 body:JSON.stringify(data)
 
             })
+            if(!response.ok){
+                throw new Error("unable to load the result")
+            }
             const result = await response.json()
             setJwt(result.jwt)
+            navigate("/home")
         } catch (error) {
            console.log(error) 
         }
@@ -45,7 +51,7 @@ function SignUp(){
 
         <>
         <h3>signup page</h3>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSignUp}>
 
             <label htmlFor="">fullname</label>
             <input type="text"
