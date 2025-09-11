@@ -40,7 +40,7 @@ function SignUp(){
             }
             const result = await response.json()
             setJwt(result.jwt)
-            navigate("/home")
+            navigate("/")
         } catch (error) {
            console.log(error) 
         }
