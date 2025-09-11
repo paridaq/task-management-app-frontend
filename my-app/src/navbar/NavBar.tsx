@@ -1,11 +1,17 @@
-import { useState } from "react";
+import { use, useContext, useState } from "react";
 import { useNavigate } from "react-router";
+import { AuthContext } from "../context/AuthContext";
 
 
 function NavBar(){
     const navigate = useNavigate();
-    const[name,setName]  = useState("");
-    
+    const[name,setName]= useState<string>("");
+   
+    // If you need to use setJwt from AuthContext, destructure it here:
+     const { jwt, setJwt } = useContext(AuthContext) ?? { jwt: "", setJwt: () => {} };    
+     
+
+     
 
     return(
         <>
@@ -31,8 +37,19 @@ function NavBar(){
 
                 {/* Right side */}
                 <div>
-                    <a href="" style={{ marginRight: "16px" }} onClick={()=>navigate("/signin")}>signIn</a>
-                    <a href="" onClick={()=>navigate("/signup")}> signUp</a>
+                    <div>
+                    {jwt ? (
+                        <div>
+                            <a href="" style={{ marginRight: "16px" }} onClick={()=>navigate("/signin")}>signIn</a>
+                        <a href="" onClick={()=>navigate("/signup")}> signUp</a>
+                        </div>
+                    ):( 
+                        <div>
+                            <h3>user</h3>
+                        </div>
+                    )}
+                    
+                    </div>
                 </div>
             </div>
             {/* Spacer to prevent content being hidden behind navbar */}
