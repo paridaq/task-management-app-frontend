@@ -1,6 +1,42 @@
+import { useNavigate } from "react-router";
 import TaskCard from "../task/TaskCard";
+import { useContext, useEffect, useState } from "react";
+import { AuthContext } from "../context/AuthContext";
 
 function HomeBar() {
+    const navigate = useNavigate();
+    const auth = useContext(AuthContext);
+    const jwt = auth?.jwt;
+    const setJwt = auth?.setJwt;
+    const[tasks,setTasks] = useState<string[]>([]);
+
+    const fetchTasks=async()=>{
+        try {
+            const response = await fetch(`http://localhost:5000/api/tasks`,{
+            method:"GET",
+            headers:{
+                "Authorization":`Bearer ${jwt}`,
+                "Content-Type":"application/json"
+            }
+        })
+        const result = await response.json();
+
+            
+        } catch (error) {
+            
+        }
+        
+        
+    }
+
+    useEffect(()=>{
+        if(jwt){
+            fetchTasks();
+        }
+    },[jwt])
+
+
+
     return (
         <div
             style={{
@@ -26,7 +62,7 @@ function HomeBar() {
                 }}
             >
                 <div>
-                    {[1,1,1,1].map((item, idx) => <span key={idx}><TaskCard /></span>)}
+                    {tasks.map((item, idx) => <span key={idx}><TaskCard /></span>)}
                 </div>
             </div>
         </div>
