@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useLoaderData, useLocation, useNavigate } from "react-router";
+import {  useLocation, useNavigate } from "react-router";
 
 
 function SideBar(){
@@ -13,6 +13,17 @@ const navigate = useNavigate();
         value: string;
         role: string[];
     };
+    const handleAssigned = ()=>{
+        const params = new URLSearchParams(location.search);
+        params.set("filter","ASSIGNED");
+        params.toString();
+         navigate({ pathname: location.pathname, search: params.toString() });
+    }
+    const handleHome =()=>{
+        const params = new URLSearchParams(location.search)
+        params.delete("filter");
+        navigate({ pathname: location.pathname })
+    }
 //export something here
     const menu: MenuItem[] = [
         { name: "Home", value: "Home", role: ["ROLE_ADMIN", "ROLE_CUSTOMER"] },
@@ -79,7 +90,12 @@ const navigate = useNavigate();
                             onClick={() =>{ setActiveMenu(item.value);
                                 if(item.name=="Create New Task"){
                                     navigate("/createtask")
+                                }else if(item.name=="ASSIGNED"){
+                                   handleAssigned();
+                                }else if(item.name=="Home"){
+                                    handleHome();
                                 }
+                                
                             }
                             }
                         >
