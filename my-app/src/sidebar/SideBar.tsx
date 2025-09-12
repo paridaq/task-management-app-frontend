@@ -24,6 +24,16 @@ const navigate = useNavigate();
         params.delete("filter");
         navigate({ pathname: location.pathname })
     }
+    const handleNotAssigned =()=>{
+        const params = new URLSearchParams(location.search);
+        params.set("filter","NOT ASSIGNED");
+        navigate({pathname:location.pathname,search:params.toString()});
+    }
+    const handleDone =()=>{
+        const params = new URLSearchParams(location.search);
+        params.set("filter","done");
+        navigate({pathname:location.pathname,search:params.toString()});
+    }
 //export something here
     const menu: MenuItem[] = [
         { name: "Home", value: "Home", role: ["ROLE_ADMIN", "ROLE_CUSTOMER"] },
@@ -94,6 +104,10 @@ const navigate = useNavigate();
                                    handleAssigned();
                                 }else if(item.name=="Home"){
                                     handleHome();
+                                }else if(item.name=="NOT ASSIGNED"){
+                                    handleNotAssigned();
+                                }else if(item.name=="DONE"){
+                                    handleDone();
                                 }
                                 
                             }
