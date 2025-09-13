@@ -12,6 +12,7 @@ function HomeBar() {
     const auth = useContext(AuthContext);
     const jwt = auth?.jwt;
     const setJwt = auth?.setJwt;
+    const [tasks,setTasks]= useState<string[]>([])
     
 
 
@@ -25,7 +26,7 @@ function HomeBar() {
             }
         })
         const result = await response.json();
-
+         setTasks(result);
             
         } catch (error) {
             
@@ -68,8 +69,8 @@ function HomeBar() {
             >
                 <div>
                     {/* {Tasks.map((item, idx) => <span key={idx}><TaskCard /></span>)} */}
-                  {[1, 1, 1, 1].map((_, idx) => (
-                      <span key={idx}><TaskCard /></span>
+                  {tasks.map((task, id) => (
+                      <span key={id}><TaskCard  task={task}/></span>
                   ))}
                 </div>
             </div>

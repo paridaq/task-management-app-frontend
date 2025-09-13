@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router";
 
 
+
 type TaskCardProps={
     title:string,
     description:string,
@@ -9,11 +10,18 @@ type TaskCardProps={
     deadline:Date
 }
 
-function TaskCard() {
+function TaskCard({task:TaskCardProps}) {
     // Example tech stack
     const techStack = ["React", "Spring Boot", "MySQL"];
 
     const navigate = useNavigate();
+    
+         const admin = import.meta.env.VITE_ADMIN_JWT;
+    
+    
+    console.log(admin);
+     
+    
 
     return (
         <div
@@ -77,12 +85,19 @@ function TaskCard() {
                     ))}
                     
                 </div>
-                <div style={{display:"flex", marginRight:"10px", gap:"20px"}}>
+                {admin?(
+                    <div style={{display:"flex", marginRight:"10px", gap:"20px"}}>
                       <a href="" onClick={()=>navigate("/assign")}>Assign</a>
                       <a href="" onClick={()=>navigate("/submissions")}>Submissions</a>
                       <a href="" onClick={()=>navigate("/edittask")}>Edit </a>
                       <a href="">Delete</a>
                 </div>
+                ):(
+                    <div>
+                        <button>submit</button>
+                    </div>
+                )}
+                
             </div>
         </div>
     );
