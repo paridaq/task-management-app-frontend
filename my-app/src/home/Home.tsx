@@ -1,8 +1,12 @@
+import { useLocation } from "react-router";
 import HomeBar from "../sidebar/HomeBar";
 import SideBar from "../sidebar/SideBar";
 
 
 function Home(){
+    const location = useLocation();
+
+
 
     return (
         <>

@@ -3,12 +3,17 @@ import TaskCard from "../task/TaskCard";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../context/AuthContext";
 
+type HomeBarProps = {
+    Tasks: any[];
+};
+
 function HomeBar() {
     const navigate = useNavigate();
     const auth = useContext(AuthContext);
     const jwt = auth?.jwt;
     const setJwt = auth?.setJwt;
-    const[tasks,setTasks] = useState<string[]>([]);
+    
+
 
     const fetchTasks=async()=>{
         try {
@@ -62,7 +67,10 @@ function HomeBar() {
                 }}
             >
                 <div>
-                    {tasks.map((item, idx) => <span key={idx}><TaskCard /></span>)}
+                    {/* {Tasks.map((item, idx) => <span key={idx}><TaskCard /></span>)} */}
+                  {[1, 1, 1, 1].map((_, idx) => (
+                      <span key={idx}><TaskCard /></span>
+                  ))}
                 </div>
             </div>
         </div>

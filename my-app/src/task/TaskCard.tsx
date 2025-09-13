@@ -1,6 +1,14 @@
 import { useNavigate } from "react-router";
 
 
+type TaskCardProps={
+    title:string,
+    description:string,
+    image:string,
+    tags:string[],
+    deadline:Date
+}
+
 function TaskCard() {
     // Example tech stack
     const techStack = ["React", "Spring Boot", "MySQL"];

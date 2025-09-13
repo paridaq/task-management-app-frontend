@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import {  useLocation, useNavigate } from "react-router";
+import { AuthContext } from "../context/AuthContext";
 
 
 function SideBar(){
@@ -7,6 +8,9 @@ function SideBar(){
 const navigate = useNavigate();
     const[activeMenu,setActiveMenu] = useState<string>("Home");
     const location = useLocation();
+    const auth = useContext(AuthContext);
+    const jwt = auth?.jwt;
+   
 
     type MenuItem = {
         name: string;
@@ -19,10 +23,22 @@ const navigate = useNavigate();
         params.toString();
          navigate({ pathname: location.pathname, search: params.toString() });
     }
-    const handleHome =()=>{
+    const handleHome =async()=>{
         const params = new URLSearchParams(location.search)
         params.delete("filter");
         navigate({ pathname: location.pathname })
+        // try {
+        //     const response = await fetch(`http://localhost:5002/api/tasks`,{
+        //         method:"GET",
+        //         headers:{
+        //             "Authorization":`Bearer ${jwt}`,
+        //             "Content-Type":"application/json"
+        //         },
+        //         body:JSON.stringify(data);
+        //     })
+        // } catch (error) {
+        //     console.log(error)
+        // }
     }
     const handleNotAssigned =()=>{
         const params = new URLSearchParams(location.search);
