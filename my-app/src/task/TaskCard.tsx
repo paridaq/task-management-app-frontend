@@ -8,9 +8,13 @@ type TaskCardProps={
     image:string,
     tags:string[],
     deadline:Date
+    createdAt:Date;
+    status:string;
+    assignedUserId:null;
+
 }
 
-function TaskCard({task:TaskCardProps}) {
+function TaskCard({task}:{task:TaskCardProps}) {
     // Example tech stack
     const techStack = ["React", "Spring Boot", "MySQL"];
 
@@ -20,7 +24,18 @@ function TaskCard({task:TaskCardProps}) {
     
     
     console.log(admin);
+
+    // "id": 2,
+    //     "title": "create a chai  website",
+    //     "description": "you need to create responsive navbar using angular 17,tailwind css and angular material ,that should contain home,about,login,logout button,userprofile",
+    //     "image": "https://www.istockphoto.com/photo/cheeseburger-gm520410807-5",
+    //     "assignedUserId": null,
+    //     "tags": [],
+    //     "deadLine": null,
+    //     "createdAt": "2025-09-01T20:46:00.566185",
+    //     "status": "DONE"
      
+    
     
 
     return (
@@ -52,7 +67,7 @@ function TaskCard({task:TaskCardProps}) {
                 }}
             >
                 <img
-                    src=""
+                    src={task.image}
                     alt="Task"
                     style={{ width: "64px", height: "64px", borderRadius: "6px" }}
                 />
@@ -60,13 +75,13 @@ function TaskCard({task:TaskCardProps}) {
             {/* Right: Details */}
             <div style={{ flex: 1 }}>
                 <p style={{ margin: 0, color: "#666", fontSize: "1rem" }}>
-                    Task description goes here. This is a sample description for the task.
+                  {task.description}
                 </p>
                 <h3 style={{ margin: "12px 0 0 0", fontSize: "1.15rem", color: "#222" }}>
-                    Task Title
+                    {task.title}
                 </h3>
                 <div style={{ marginTop: "14px", display: "flex", gap: "10px" }}>
-                    {techStack.map((tech) => (
+                    {task.tags.map((tech) => (
                         <span
                             key={tech}
                             style={{
