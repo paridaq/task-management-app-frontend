@@ -130,7 +130,7 @@ const navigate = useNavigate();
                             }
                         >
                             <a
-                                href="#"
+                                
                                 style={{
                                     color: activeMenu === item.value ? "#fff" : "#1976d2",
                                     textDecoration: "none"

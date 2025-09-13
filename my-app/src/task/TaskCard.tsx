@@ -16,7 +16,7 @@ type TaskCardProps={
 
 function TaskCard({task}:{task:TaskCardProps}) {
     // Example tech stack
-    const techStack = ["React", "Spring Boot", "MySQL"];
+   // const techStack = ["React", "Spring Boot", "MySQL"];
 
     const navigate = useNavigate();
     
@@ -102,10 +102,10 @@ function TaskCard({task}:{task:TaskCardProps}) {
                 </div>
                 {admin?(
                     <div style={{display:"flex", marginRight:"10px", gap:"20px"}}>
-                      <a href="" onClick={()=>navigate("/assign")}>Assign</a>
-                      <a href="" onClick={()=>navigate("/submissions")}>Submissions</a>
-                      <a href="" onClick={()=>navigate("/edittask")}>Edit </a>
-                      <a href="">Delete</a>
+                      <a  onClick={()=>navigate("/assign")}>Assign</a>
+                      <a  onClick={()=>navigate("/submissions")}>Submissions</a>
+                      <a  onClick={()=>navigate("/edittask")}>Edit </a>
+                      <a >Delete</a>
                 </div>
                 ):(
                     <div>

@@ -1,4 +1,4 @@
-import { use, useContext, useEffect, useState } from "react";
+import { use, useActionState, useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import { AuthContext } from "../context/AuthContext";
 
@@ -7,8 +7,9 @@ function NavBar(){
     const navigate = useNavigate();
     const[fullName,setFullName]= useState<string>("");
    
-    // If you need to use setJwt from AuthContext, destructure it here:
+    // If you need to use setJwt from AuthContext, destructure it here
      const { jwt } = useContext(AuthContext) ?? { jwt: ""};  
+     const {setJwt}= useContext(AuthContext) ?? {setJwt:()=>{}}
      
      const userProfile=async()=>{
         try {
@@ -22,6 +23,7 @@ function NavBar(){
         const result = await response.json();
         console.log(result);
         setFullName(result.fullName);
+        setJwt(jwt);
         
         } catch (error) {
             console.log(error)
@@ -70,8 +72,8 @@ function NavBar(){
                     ):( 
                         
                          <div>
-                            <a href="" style={{ marginRight: "16px" }} onClick={()=>navigate("/signin")}>signIn</a>
-                        <a href="" onClick={()=>navigate("/signup")}> signUp</a>
+                            <a  style={{ marginRight: "16px" }} onClick={()=>navigate("/signin")}>signIn</a>
+                        <a  onClick={()=>navigate("/signup")}> signUp</a>
                         </div>
                     )}
                     
