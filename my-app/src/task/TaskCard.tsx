@@ -1,8 +1,11 @@
+import { useContext } from "react";
 import { useNavigate } from "react-router";
+import { AuthContext } from "../context/AuthContext";
 
 
 
 type TaskCardProps={
+    id:number;
     title:string,
     description:string,
     image:string,
@@ -21,6 +24,8 @@ function TaskCard({task}:{task:TaskCardProps}) {
     const navigate = useNavigate();
     
          const admin = import.meta.env.VITE_ADMIN_JWT;
+         const auth = useContext(AuthContext);
+         const jwt = auth?.jwt;
     
     
     console.log(admin);
@@ -34,7 +39,8 @@ function TaskCard({task}:{task:TaskCardProps}) {
     //     "deadLine": null,
     //     "createdAt": "2025-09-01T20:46:00.566185",
     //     "status": "DONE"
-     
+
+     localStorage.setItem("task_id",task.id)
     
     
 
@@ -108,7 +114,7 @@ function TaskCard({task}:{task:TaskCardProps}) {
                       <a >Delete</a>
                 </div>
                 ):(
-                    <div>
+                    <div style={{display:"flex",marginRight:"10px",gap:"20px"}}>
                         <button>submit</button>
                     </div>
                 )}

@@ -12,7 +12,7 @@ function HomeBar() {
     const auth = useContext(AuthContext);
     const jwt = auth?.jwt;
     const setJwt = auth?.setJwt;
-    const [tasks,setTasks]= useState<string[]>([])
+    const [tasks,setTasks]= useState<HomeBarProps[]>([])
     
 
 
@@ -69,7 +69,7 @@ function HomeBar() {
             >
                 <div>
                     {/* {Tasks.map((item, idx) => <span key={idx}><TaskCard /></span>)} */}
-                  {tasks.map((task, id) => (
+                  {tasks.map((task,id) => (
                       <span key={id}><TaskCard  task={task}/></span>
                   ))}
                 </div>
