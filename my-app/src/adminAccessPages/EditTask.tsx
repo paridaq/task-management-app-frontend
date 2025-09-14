@@ -35,6 +35,7 @@ const fetchUser=async()=>{
         setTitle(result.title);           //title ,descriptipn,image,tags,deadline,
         setDescription(result.description);
         setTags(result.tags.joint(","));
+        setImage(image)
         
         
     } catch (error) {
@@ -63,7 +64,7 @@ const handleEdit =async(e:React.FormEvent<HTMLFormElement>)=>{
      const tagArray= tags.split(",").map(tag=>tag.trim()).filter(tag=>tag.length>0)
     const data = {title,description,image,tags:tagArray,deadline}
     try {
-         const response =await fetch(`http://localhost:5000/${id}`,{
+         const response =await fetch(`http://localhost:5000/api/tasks/${id}`,{
             method:"PUT",
             headers:{
                 "Authorization":`Bearer ${jwt}`,
