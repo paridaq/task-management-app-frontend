@@ -40,8 +40,31 @@ function TaskCard({task}:{task:TaskCardProps}) {
     //     "createdAt": "2025-09-01T20:46:00.566185",
     //     "status": "DONE"
 
-     localStorage.setItem("task_id",task.id)
+     localStorage.setItem("task_id",task.id.toString());
     
+
+//      6-DELETE-/id
+// deleTask(id)    api/tasks
+
+    
+
+     const handleDelete =async()=>{
+
+        const id = task.id;
+        try {
+            const response= await fetch(`http://localhost:5000/api/tasks/${id}`,{
+                method:"DELETE",
+                headers:{
+                    "Authorization":`Bearer ${jwt}`,
+                    "Content-Type":"application/json"
+                }
+            })
+            const result = await response.json();
+            console.log(result)
+        } catch (error) {
+            console.log(error)
+        }
+     }
     
 
     return (
@@ -111,7 +134,7 @@ function TaskCard({task}:{task:TaskCardProps}) {
                       <a  onClick={()=>navigate("/assign")}>Assign</a>
                       <a  onClick={()=>navigate("/submissions")}>Submissions</a>
                       <a  onClick={()=>navigate("/edittask")}>Edit </a>
-                      <a >Delete</a>
+                      <a onClick={handleDelete}>Delete</a>
                 </div>
                 ):(
                     <div style={{display:"flex",marginRight:"10px",gap:"20px"}}>
