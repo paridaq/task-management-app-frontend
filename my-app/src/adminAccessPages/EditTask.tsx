@@ -34,6 +34,8 @@ const fetchUser=async()=>{
         console.log(result)
         setTitle(result.title);           //title ,descriptipn,image,tags,deadline,
         setDescription(result.description);
+        setTags(result.tags.joint(","));
+        
         
     } catch (error) {
         console.log(error);
@@ -48,8 +50,32 @@ useEffect(()=>{
     }
 },[id])
 
-const handleEdit =async()=>{
-    
+
+
+
+// 5-PUT-/id
+// updateTask(id,req,jwt)  req = Task
+
+
+
+const handleEdit =async(e:React.FormEvent<HTMLFormElement>)=>{
+     e.preventDefault();
+     const tagArray= tags.split(",").map(tag=>tag.trim()).filter(tag=>tag.length>0)
+    const data = {title,description,image,tags:tagArray,deadline}
+    try {
+         const response =await fetch(`http://localhost:5000/${id}`,{
+            method:"PUT",
+            headers:{
+                "Authorization":`Bearer ${jwt}`,
+                "Content-Type":"application/json"
+            },
+            body:JSON.stringify(data)
+         })
+         const result = await response.json();
+         console.log(result);
+    } catch (error) {
+         console.log(error)  
+    } 
 
 }
     
@@ -58,8 +84,11 @@ const handleEdit =async()=>{
 
         <>
         <h3>task form to edit the task</h3>
-         <form onSubmit={handleEdit}>
-            <label htmlFor="">titel</label>
+        {loading?(
+            <h1>Loading Task data.........</h1>
+        ):(
+             <form onSubmit={handleEdit}>
+            <label htmlFor="">title</label>
             <input type="text"
             value={title} 
             required
@@ -87,6 +116,8 @@ const handleEdit =async()=>{
             <button type="submit">submit</button>
            
         </form>
+        )}
+        
         
         
         </>
