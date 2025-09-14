@@ -2,6 +2,14 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../context/AuthContext";
 
 
+type User={
+    id:number;
+    email:string;
+    role:string;
+    fullName:string;
+    passwrod:string;
+}
+
 function Assign(){
 //   type Users=string[];
 
@@ -9,7 +17,8 @@ function Assign(){
    const auth = useContext(AuthContext);
    const jwt = auth?.jwt;
 
-    const [users,sertUsers]= useState<string[]>([]);
+    const [users,sertUsers]= useState<User[]>([]);
+
 
     const fetchUsers = async()=>{
         try {
@@ -22,8 +31,8 @@ function Assign(){
             })
             const result = await response.json();
             console.log(result)
+         
             sertUsers(result);
-            
         } catch (error) {
             console.log(error)
         }
@@ -42,9 +51,9 @@ function Assign(){
         <div style={{ }}>
             <h2>what the fuck</h2>
             <div>
-                {users.map((item,)=>(
-                    <ul key={item} style={{display:"flex", gap:"10px"}}>
-                       <li>{item}</li>
+                {users.map((user)=>(
+                    <ul key={user.id} style={{display:"flex", gap:"10px"}}>
+                       <li>{user.fullName}</li>
                        <button>assign</button>
                     </ul>
                 
