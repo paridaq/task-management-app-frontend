@@ -65,7 +65,7 @@ function TaskCard({task}:{task:TaskCardProps}) {
             console.log(error)
         }
      }
-    
+    //use useeffect for auto fetchiing all the details again after some delete operation
 
     return (
         <div
