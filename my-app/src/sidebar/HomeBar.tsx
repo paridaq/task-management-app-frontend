@@ -6,6 +6,18 @@ import { AuthContext } from "../context/AuthContext";
 type HomeBarProps = {
     Tasks: any[];
 };
+type Task={
+    id:number;
+    title:string,
+    description:string,
+    image:string,
+    tags:string[],
+    deadline:Date
+    createdAt:Date;
+    status:string;
+    assignedUserId:null;
+
+}
 
 function HomeBar() {
     const navigate = useNavigate();
@@ -26,7 +38,9 @@ function HomeBar() {
             }
         })
         const result = await response.json();
-         setTasks(result);
+        const value = localStorage.getItem("deleted_task_id");
+        const Taskid = value? parseInt(value):null;
+         setTasks(result.filter((r:Task)=>r.id!=Taskid))
             
         } catch (error) {
             
