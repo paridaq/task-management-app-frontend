@@ -4,7 +4,7 @@ import { AuthContext } from "../context/AuthContext";
 
 
 
-type TaskCardProps={
+ export type TaskCardProps={
     id:number;
     title:string,
     description:string,
@@ -45,6 +45,13 @@ function TaskCard({task}:{task:TaskCardProps}) {
 
 //      6-DELETE-/id
 // deleTask(id)    api/tasks
+//-------------------------------------
+// requestmapping =api/submissions
+// 1-POST  
+//   task_id,github_link,jwt   submittask
+
+
+
 
     
 
