@@ -75,6 +75,10 @@ function TaskCard({task}:{task:TaskCardProps}) {
         }
      }
     
+     const handleSubmitButton=()=>{
+        localStorage.setItem("task_id",task.id.toString());
+        navigate("/submitTask")
+     }
 
     return (
         <div
