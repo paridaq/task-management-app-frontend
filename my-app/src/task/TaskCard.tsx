@@ -75,7 +75,7 @@ function TaskCard({task}:{task:TaskCardProps}) {
         }
      }
     
-     const handleSubmitButton=()=>{
+     const handleSubmissions=()=>{
         localStorage.setItem("task_id",task.id.toString());
         navigate("/submitTask")
      }
@@ -145,7 +145,7 @@ function TaskCard({task}:{task:TaskCardProps}) {
                 {admin?(
                     <div style={{display:"flex", marginRight:"10px", gap:"20px"}}>
                       <a  onClick={()=>navigate("/assign")}>Assign</a>
-                      <a  onClick={()=>navigate("/submissions")}>Submissions</a>
+                      <a  onClick={handleSubmissions}>Submissions</a>
                       <a  onClick={()=>navigate("/edittask")}>Edit </a>
                       <a onClick={handleDelete}>Delete</a>
                 </div>
