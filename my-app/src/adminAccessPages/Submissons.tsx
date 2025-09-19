@@ -7,11 +7,26 @@ function Submission(){
     const [submissions,setSubmissions]= useState<string[]>([]);
 
 
+
+
+// 1-GET-	/id
+// getTaskById(id,jwt)  requestmapping api/tasks
+
+
+
+//----------------------------------------------
+//     requestmapping =api/submissions
+
+
+// 1-POST
+//   task_id,github_link,jwt   submittask
+
    const submission:Submissions=["submission1","submissions2"]
    
 
    const fetchSubmissions=()=>{
-    const task =
+
+
     try {
         
     } catch (error) {

@@ -74,6 +74,11 @@ function TaskCard({task}:{task:TaskCardProps}) {
             console.log(error)
         }
      }
+
+     const handleAssign=()=>{
+        localStorage.setItem("task_id",task.id.toString());
+        navigate('/assign')
+     }
     
      const handleSubmissions=()=>{
         localStorage.setItem("task_id",task.id.toString());
