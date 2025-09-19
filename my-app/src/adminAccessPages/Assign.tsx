@@ -19,6 +19,7 @@ function Assign(){
 
     const [users,sertUsers]= useState<User[]>([]);
     const [github_link,setGithub_link] = useState<string>("");
+    
 //task id through localstorage
 
     const fetchUsers = async()=>{
@@ -45,12 +46,12 @@ function Assign(){
         }
     },[jwt])
 
-    const assignTask=async()=>{
+    const assignTask=async(userId:number)=>{
         const id = localStorage.getItem("task_id");
         const task_id = id ? parseInt(id) : null
       try {
-          const response = await fetch(`http://localhost:5000/api/submissions?task_id=${task_id}&github_link=${github_link}`,{
-            method:"POST",
+          const response = await fetch(`http://localhost:5000/api/tasks/${id}/user/${userId}/assigned`,{
+            method:"PUT",
             headers:{
                 "Authorization":`Bearer ${jwt}`,
                 
@@ -74,7 +75,7 @@ function Assign(){
                 {users.map((user)=>(
                     <ul key={user.id} style={{display:"flex", gap:"10px"}}>
                        <li>{user.fullName}</li>
-                       <button onClick={assignTask}>assign</button>
+                       <button onClick={()=>assignTask(user.id)}>assign</button>
                     </ul>
                 
                 ))}
