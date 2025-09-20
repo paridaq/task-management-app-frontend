@@ -69,6 +69,22 @@ const navigate = useNavigate();
     }
     // add the priority
 
+    //fetch teh assign tasks
+    const fetchTasks =async()=>{
+         try {
+            const response = await fetch(`http://localhost:5000/api/tasks/user`,{
+                method:"GET",
+                headers:{
+                    "Authorization":`Bearer ${jwt}`
+                }
+            })
+            const result = await response.json();
+            console.log(result)
+         } catch (error) {
+            console.log(error)
+         }
+    }
+
     
 
     return (
