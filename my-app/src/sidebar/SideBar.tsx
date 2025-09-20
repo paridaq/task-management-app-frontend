@@ -67,6 +67,7 @@ const navigate = useNavigate();
     const handleLogout=()=>{
         console.log("user logedout")
     }
+    // add the priority
 
     
 
