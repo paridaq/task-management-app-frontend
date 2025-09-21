@@ -47,7 +47,7 @@ const navigate = useNavigate();
     }
     const handleDone =()=>{
         const params = new URLSearchParams(location.search);
-        params.set("filter","done");
+        params.set("filter","DONE");
         navigate({pathname:location.pathname,search:params.toString()});
     }
 //export something here
