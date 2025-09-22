@@ -69,16 +69,38 @@ function HomeBar() {
     }
     const params = new URLSearchParams(location.search);
    const parameter = params.toString()
+
+
+   const fetchAssignedUserTask =async()=>{
+        const response = await fetch(`http://localhost:5000/api/tasks/user`,{
+            method:"GET",
+            headers:{
+                "Authorization":`Bearer ${jwt}`
+            }
+        })
+        const result =await response.json();
+        console.log(result)
+        setTasks(result);
+    try {
+        
+    } catch (error) {
+        console.log(error)
+    }
+   }
     
     useEffect(()=>{
-        
+        if(!parameter.includes("NOTIFICATION")){
 
             if(jwt){
                 fetchTasks();
             }
+        }else{
+            fetchAssignedUserTask();
+        }
+          
         
 
-    },[jwt])
+    },[jwt,parameter])
 
 
 

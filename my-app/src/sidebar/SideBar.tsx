@@ -40,6 +40,11 @@ const navigate = useNavigate();
         //     console.log(error)
         // }
     }
+    const handleNotification=()=>{
+        const params = new URLSearchParams(location.search);
+        params.set("filter","NOTIFICATION");
+        navigate({pathname:location.pathname,search:location.search.toString()})
+    }
     const handleNotAssigned =()=>{
         const params = new URLSearchParams(location.search);
         params.set("filter","NOT ASSIGNED");
@@ -141,6 +146,8 @@ const navigate = useNavigate();
                                     handleNotAssigned();
                                 }else if(item.name=="DONE"){
                                     handleDone();
+                                }else if(item.name=="Notification"){
+                                    handleNotification();
                                 }
                                 
                             }
